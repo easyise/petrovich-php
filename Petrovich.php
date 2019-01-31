@@ -72,7 +72,7 @@ class Petrovich {
     }
 
     /**
-     * Задаём имя и слоняем его
+     * Задаём имя и склоняем его
      *
      * @param $firstname
      * @param $case
