@@ -48,19 +48,27 @@ class Petrovich {
     {
         if(empty($middlename))
             throw new Exception('Middlename cannot be empty.');
+
+        $retVal = Petrovich::GENDER_ANDROGYNOUS;
 	    
 	switch ( mb_substr( mb_strtolower($middlename) , -4))
         {
-            case 'оглы': return Petrovich::GENDER_MALE; break;
-            case 'кызы': return Petrovich::GENDER_FEMALE; break;
+            case 'оглы': $retVal = Petrovich::GENDER_MALE; break;
+            case 'кызы': $retVal = Petrovich::GENDER_FEMALE; break;
+            default: break;
         }
 
         switch ( mb_substr( mb_strtolower($middlename) , -2))
         {
-            case 'ич': return Petrovich::GENDER_MALE; break;
-            case 'на': return Petrovich::GENDER_FEMALE; break;
-            default: return Petrovich::GENDER_ANDROGYNOUS; break;
+            case 'ич': $retVal = Petrovich::GENDER_MALE; break;
+            case 'на': $retVal = Petrovich::GENDER_FEMALE; break;
+            default: break;
         }
+
+        $this->gender = $retVal;
+
+        return $retVal;
+
     }
 
     /**
